@@ -1933,10 +1933,6 @@ tbody tr:hover {
     padding: 16px;
   }
 }
-```css
-/* =========================
-   HOSTELSNAP
-========================= */
 
 .hostelsnap-page {
   display: grid;
