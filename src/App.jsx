@@ -1,7 +1,7 @@
 
 import "./App.css";
 import { useState } from "react";
-import Login from "./pages/Login";
+import Login from "./pages/login.jsx";
 import Register from "./pages/Register";
 import Dashboard from "./Dashboard";
 import StudentDashboard from "./pages/StudentDashboard";
