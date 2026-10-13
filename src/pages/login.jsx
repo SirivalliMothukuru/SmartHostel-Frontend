@@ -6,13 +6,15 @@ import {
   EyeOff,
   LockKeyhole,
   Mail,
-  ShieldCheck
+  ShieldCheck,
+  Users
 } from "lucide-react";
 import api from "../api";
 
 function Login({ onLogin, onRegister }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("STUDENT");
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,43 +27,37 @@ function Login({ onLogin, onRegister }) {
     try {
       const response = await api.post("/auth/login", {
         email: email.trim(),
-        password
+        password,
+        role
       });
 
-      const {
-        token,
-        role,
-        block,
-        email: userEmail
-      } = response.data;
+      const { token, role: accountRole, block, email: userEmail } =
+        response.data;
 
       if (!token) {
         throw new Error("Login response did not contain a token.");
       }
 
+      if (accountRole?.toUpperCase() !== role) {
+        throw new Error("Selected role does not match your account.");
+      }
+
       localStorage.setItem("token", token);
-      localStorage.setItem("role", role || "");
+      localStorage.setItem("role", accountRole.toUpperCase());
       localStorage.setItem("block", block || "");
       localStorage.setItem("email", userEmail || email.trim());
 
       onLogin(response.data);
     } catch (error) {
-      console.error("Login error:", error);
-      console.error("Server response:", error.response?.data);
+      const data = error.response?.data;
 
-      if (error.response?.data) {
-        const data = error.response.data;
-        setMessage(
-          typeof data === "string"
-            ? data
-            : data.message || JSON.stringify(data)
-        );
-      } else {
-        setMessage(
-          error.message ||
+      setMessage(
+        typeof data === "string"
+          ? data
+          : data?.message ||
+            error.message ||
             "Unable to sign in. Check your credentials and server."
-        );
-      }
+      );
     } finally {
       setLoading(false);
     }
@@ -115,6 +111,24 @@ function Login({ onLogin, onRegister }) {
               <span className="form-welcome">WELCOME BACK</span>
               <h2>Sign in to your account</h2>
               <p>Enter your credentials to access your workspace.</p>
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="role">Login as</label>
+              <div className="form-input-wrap">
+                <Users size={18} />
+                <select
+                  id="role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                >
+                  <option value="STUDENT">Student</option>
+                  <option value="WARDEN">Warden</option>
+                  <option value="ADMIN">Admin</option>
+                  <option value="SECURITY">Security</option>
+                </select>
+              </div>
             </div>
 
             <div className="form-field">

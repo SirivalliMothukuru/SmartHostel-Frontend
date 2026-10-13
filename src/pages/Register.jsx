@@ -1,12 +1,19 @@
 
 import { useState } from "react";
-import { Building2, Mail, LockKeyhole, User } from "lucide-react";
+import {
+  Building2,
+  Mail,
+  LockKeyhole,
+  User,
+  Users
+} from "lucide-react";
 import api from "../api";
 
 function Register({ onRegistered, onBackToLogin }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("STUDENT");
   const [block, setBlock] = useState("BOYS");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,7 +29,8 @@ function Register({ onRegistered, onBackToLogin }) {
         name: name.trim(),
         email: email.trim(),
         password,
-        block
+        role,
+        block: role === "WARDEN" || role === "SECURITY" ? block : null
       });
 
       setSuccess(true);
@@ -55,7 +63,10 @@ function Register({ onRegistered, onBackToLogin }) {
           <div className="login-visual-content">
             <span className="login-eyebrow">JOIN SMART HOSTEL</span>
             <h1>Your hostel journey starts here.</h1>
-            <p>Create your account to access hostel services and student facilities.</p>
+            <p>
+              Create your account to access hostel services and
+              everyday campus facilities.
+            </p>
           </div>
 
           <div className="login-visual-footer">
@@ -125,19 +136,43 @@ function Register({ onRegistered, onBackToLogin }) {
             </div>
 
             <div className="form-field">
-              <label htmlFor="register-block">Hostel block</label>
-              <select
-                id="register-block"
-                value={block}
-                onChange={(e) => setBlock(e.target.value)}
-              >
-                <option value="BOYS">Boys Block</option>
-                <option value="GIRLS">Girls Block</option>
-              </select>
+              <label htmlFor="register-role">Register as</label>
+              <div className="form-input-wrap">
+                <Users size={18} />
+                <select
+                  id="register-role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                >
+                  <option value="STUDENT">Student</option>
+                  <option value="WARDEN">Warden</option>
+                  <option value="ADMIN">Admin</option>
+                  <option value="SECURITY">Security</option>
+                </select>
+              </div>
             </div>
 
+            {(role === "WARDEN" || role === "SECURITY") && (
+              <div className="form-field">
+                <label htmlFor="register-block">Assigned hostel block</label>
+                <select
+                  id="register-block"
+                  value={block}
+                  onChange={(e) => setBlock(e.target.value)}
+                  required
+                >
+                  <option value="BOYS">Boys Block</option>
+                  <option value="GIRLS">Girls Block</option>
+                </select>
+              </div>
+            )}
+
             {message && (
-              <div className={success ? "login-success" : "login-error"} role="alert">
+              <div
+                className={success ? "login-success" : "login-error"}
+                role="alert"
+              >
                 {message}
               </div>
             )}
@@ -160,9 +195,13 @@ function Register({ onRegistered, onBackToLogin }) {
               </button>
             )}
 
-            <p>
+            <p className="register-prompt">
               Already have an account?{" "}
-              <button type="button" onClick={onBackToLogin}>
+              <button
+                type="button"
+                onClick={onBackToLogin}
+                className="register-link"
+              >
                 Sign in
               </button>
             </p>

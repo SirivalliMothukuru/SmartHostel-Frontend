@@ -2322,3 +2322,637 @@ tbody tr:hover {
     text-align: center;
   }
 }
+
+/* =========================================
+   SMARTHOSTEL — PREMIUM WARDEN THEME
+========================================= */
+
+.warden-dashboard {
+    --w-primary: #14b8a6;
+    --w-primary-dark: #0f766e;
+    --w-navy: #102a43;
+    --w-panel: #ffffff;
+    --w-text: #17324a;
+    --w-muted: #71869a;
+    --w-border: #dce7f0;
+
+    background:
+        radial-gradient(ellipse at 80% 0%, rgba(20, 184, 166, 0.09), transparent 35%),
+        linear-gradient(135deg, #edf3fa, #f5f8fc 55%, #eaf5f5);
+    color: var(--w-text);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Sidebar */
+
+.warden-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(20, 184, 166, 0.18), transparent 30%),
+        linear-gradient(180deg, #102a43, #0b1d30 75%, #102d40);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 8px 0 30px rgba(16, 42, 67, 0.08);
+}
+
+.warden-sidebar h2 {
+    padding: 15px 10px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f0fdfa;
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.warden-sidebar h2 span {
+    color: #5eead4;
+}
+
+.warden-sidebar nav {
+    gap: 7px;
+}
+
+.warden-sidebar button,
+.warden-sidebar a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 45px;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #b8cbd9;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.22s ease;
+}
+
+.warden-sidebar button:hover,
+.warden-sidebar a:hover {
+    border-color: rgba(94, 234, 212, 0.13);
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.warden-sidebar button.active,
+.warden-sidebar a.active {
+    border-color: rgba(94, 234, 212, 0.2);
+    background: linear-gradient(100deg, rgba(20, 184, 166, 0.28), rgba(20, 184, 166, 0.08));
+    color: #ffffff;
+    box-shadow: inset 3px 0 #5eead4;
+}
+
+/* Main content */
+
+.warden-main {
+    min-width: 0;
+    padding: 30px;
+    background: transparent;
+}
+
+.warden-header {
+    position: relative;
+    padding: 23px 26px;
+    margin-bottom: 27px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    background: linear-gradient(115deg, #ffffff, #f0f8fb 65%, #e6f7f4);
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.055);
+}
+
+.warden-header h1 {
+    color: #102a43;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(23px, 2.3vw, 31px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.warden-header p {
+    color: #71869a;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.warden-content h2 {
+    color: #17324a;
+    font-family: 'Manrope', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+}
+
+.warden-content h3 {
+    color: #24465b;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+}
+
+/* Dashboard statistic cards */
+
+.warden-stats,
+.warden-cards,
+.warden-dashboard-cards {
+    gap: 19px;
+    margin-bottom: 28px;
+}
+
+.warden-stat-card,
+.warden-card,
+.warden-dashboard-card {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    padding: 23px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 17px;
+    background: linear-gradient(145deg, #ffffff, #f0f6fb);
+    box-shadow: 0 7px 25px rgba(16, 42, 67, 0.055);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.warden-stat-card::after,
+.warden-card::after,
+.warden-dashboard-card::after {
+    position: absolute;
+    z-index: -1;
+    top: -36px;
+    right: -35px;
+    width: 115px;
+    height: 115px;
+    border: 20px solid rgba(20, 184, 166, 0.065);
+    border-radius: 50%;
+    content: '';
+    pointer-events: none;
+}
+
+.warden-stat-card:hover,
+.warden-card:hover,
+.warden-dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 32px rgba(16, 42, 67, 0.11);
+}
+
+.warden-stat-card h3,
+.warden-card h3,
+.warden-dashboard-card h3 {
+    color: #6b8193;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.warden-stat-card p,
+.warden-card p,
+.warden-dashboard-card p {
+    color: #12334a;
+    font-family: 'Manrope', sans-serif;
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+/* Give individual cards colorful accents */
+
+.warden-stat-card:nth-child(4n + 1) {
+    background: linear-gradient(145deg, #ffffff, #e5f8f4);
+}
+
+.warden-stat-card:nth-child(4n + 2) {
+    background: linear-gradient(145deg, #ffffff, #eaf1ff);
+}
+
+.warden-stat-card:nth-child(4n + 3) {
+    background: linear-gradient(145deg, #ffffff, #fff4e5);
+}
+
+.warden-stat-card:nth-child(4n + 4) {
+    background: linear-gradient(145deg, #ffffff, #f4eefe);
+}
+
+/* Forms and input fields */
+
+.warden-content form,
+.warden-form {
+    padding: 25px;
+    gap: 17px;
+    border: 1px solid #dce8f0;
+    border-radius: 17px;
+    background: linear-gradient(145deg, #ffffff, #f3f8fc);
+    box-shadow: 0 8px 25px rgba(16, 42, 67, 0.045);
+}
+
+.warden-content input,
+.warden-content select,
+.warden-content textarea,
+.warden-form input,
+.warden-form select,
+.warden-form textarea {
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid #d6e2eb;
+    border-radius: 10px;
+    background: #f9fbfd;
+    color: #17324a;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.warden-content input::placeholder,
+.warden-content textarea::placeholder,
+.warden-form input::placeholder,
+.warden-form textarea::placeholder {
+    color: #9aabba;
+}
+
+.warden-content input:focus,
+.warden-content select:focus,
+.warden-content textarea:focus,
+.warden-form input:focus,
+.warden-form select:focus,
+.warden-form textarea:focus {
+    border-color: #14b8a6;
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.11);
+}
+
+/* Buttons */
+
+.warden-content button,
+.warden-form button {
+    min-height: 40px;
+    padding: 11px 17px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #0f9488, #14b8a6);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 11px rgba(15, 148, 136, 0.13);
+    transition: all 0.2s ease;
+}
+
+.warden-content button:hover,
+.warden-form button:hover {
+    background: linear-gradient(135deg, #0f766e, #0d9488);
+    box-shadow: 0 7px 17px rgba(15, 148, 136, 0.2);
+    transform: translateY(-1px);
+}
+
+.warden-content button:disabled,
+.warden-form button:disabled {
+    transform: none;
+    box-shadow: none;
+}
+
+.warden-content button.danger {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    box-shadow: 0 4px 11px rgba(220, 38, 38, 0.12);
+}
+
+.warden-content button.danger:hover {
+    background: #b91c1c;
+}
+
+/* Tables */
+
+.warden-content table {
+    overflow: hidden;
+    border: 1px solid #dce7ef;
+    border-radius: 13px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(16, 42, 67, 0.045);
+}
+
+.warden-content thead {
+    background: linear-gradient(100deg, #173b50, #20546a);
+}
+
+.warden-content th {
+    padding: 15px 16px;
+    border-bottom: none;
+    background: transparent;
+    color: #e7f7f8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+    white-space: nowrap;
+}
+
+.warden-content td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #edf2f6;
+    color: #526b7c;
+    font-size: 12px;
+}
+
+.warden-content tbody tr {
+    transition: background 0.2s ease;
+}
+
+.warden-content tbody tr:nth-child(even) {
+    background: #f6f9fc;
+}
+
+.warden-content tbody tr:hover td {
+    background: #e9f8f5;
+}
+
+.warden-content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Content panels */
+
+.warden-list,
+.warden-panel {
+    padding: 24px;
+    border: 1px solid #dce7ef;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #ffffff, #f6f9fc);
+    box-shadow: 0 7px 23px rgba(16, 42, 67, 0.045);
+}
+
+/* Mess Management */
+
+.mess-management {
+    padding: 0;
+}
+
+.mess-management h2 {
+    color: #143b50;
+    font-family: 'Manrope', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.mess-management > p {
+    color: #71869a;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.mess-menu-form {
+    padding: 26px;
+    gap: 17px;
+    border: 1px solid #d7e9e7;
+    border-radius: 17px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(20, 184, 166, 0.09), transparent 35%),
+        linear-gradient(145deg, #ffffff, #f0f8fa);
+    box-shadow: 0 8px 25px rgba(16, 42, 67, 0.055);
+}
+
+.mess-menu-form input,
+.mess-menu-form select,
+.mess-menu-form textarea {
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid #d6e5eb;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #17324a;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.mess-menu-form input:focus,
+.mess-menu-form select:focus,
+.mess-menu-form textarea:focus {
+    border-color: #14b8a6;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+}
+
+.mess-menu-list {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.mess-menu-card {
+    position: relative;
+    padding: 23px;
+    overflow: hidden;
+    border: 1px solid #dce8ef;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #ffffff, #eff8f8);
+    box-shadow: 0 7px 24px rgba(16, 42, 67, 0.055);
+    transition: transform 0.23s, box-shadow 0.23s;
+}
+
+.mess-menu-card:nth-child(even) {
+    background: linear-gradient(145deg, #ffffff, #f0f3ff);
+}
+
+.mess-menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(16, 42, 67, 0.1);
+}
+
+.mess-menu-card h3 {
+    margin-bottom: 13px;
+    color: #163b50;
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.mess-menu-card p {
+    color: #627b8c;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.mess-menu-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.mess-menu-actions button {
+    flex: 1;
+    min-width: 85px;
+}
+
+.mess-menu-actions button:last-child {
+    background: linear-gradient(135deg, #dc4545, #ef6262);
+    box-shadow: 0 4px 10px rgba(220, 69, 69, 0.12);
+}
+
+.mess-menu-actions button:last-child:hover {
+    background: #b91c1c;
+}
+
+/* Loading, errors and success messages */
+
+.warden-error,
+.mess-error {
+    padding: 15px 17px;
+    border: 1px solid #f2c7c7;
+    border-radius: 11px;
+    background: linear-gradient(120deg, #fff4f4, #fffafa);
+    color: #b42318;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.warden-success {
+    padding: 15px 17px;
+    border: 1px solid #bde8d3;
+    border-radius: 11px;
+    background: linear-gradient(120deg, #e9fbf2, #f7fffb);
+    color: #13795b;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.warden-loading,
+.warden-empty,
+.mess-loading,
+.mess-empty {
+    padding: 35px 20px;
+    border: 1px dashed #cbdce6;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #f2f8fb, #f1faf7);
+    color: #71869a;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* Scrollbar */
+
+.warden-sidebar::-webkit-scrollbar,
+.warden-main::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.warden-sidebar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #36566c;
+}
+
+.warden-main::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #c5d8df;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .warden-sidebar {
+        width: 215px;
+        min-width: 215px;
+    }
+
+    .warden-main {
+        padding: 20px;
+    }
+
+    .warden-header {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .warden-dashboard {
+        flex-direction: column;
+    }
+
+    .warden-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-width: 0;
+        min-height: auto;
+        padding: 17px;
+    }
+
+    .warden-sidebar h2 {
+        margin-bottom: 18px;
+    }
+
+    .warden-sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .warden-sidebar button,
+    .warden-sidebar a {
+        font-size: 11px;
+        padding: 10px;
+    }
+
+    .warden-main {
+        padding: 15px;
+    }
+
+    .warden-header {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .warden-header h1 {
+        font-size: 23px;
+    }
+
+    .warden-stats,
+    .warden-cards,
+    .warden-dashboard-cards,
+    .mess-menu-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .warden-stat-card,
+    .warden-card,
+    .warden-dashboard-card {
+        padding: 15px;
+    }
+
+    .warden-stat-card p,
+    .warden-card p,
+    .warden-dashboard-card p {
+        font-size: 23px;
+    }
+
+    .warden-content form,
+    .warden-form,
+    .mess-menu-form {
+        grid-template-columns: 1fr;
+        padding: 17px;
+    }
+
+    .warden-list,
+    .warden-panel {
+        padding: 16px;
+    }
+
+    .warden-content table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .mess-menu-card {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .warden-stats,
+    .warden-cards,
+    .warden-dashboard-cards,
+    .mess-menu-list {
+        grid-template-columns: 1fr;
+    }
+}
